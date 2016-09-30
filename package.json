@@ -1,0 +1,28 @@
+{
+  "name": "prevkonsep",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Simple node PAI & Mongo server with ES2015",
+  "main": "bin/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mucht/prevkonsep.git"
+  },
+  "author": "Mucht",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mucht/prevkonsep/issues"
+  },
+  "homepage": "https://github.com/Mucht/prevkonsep#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "gulp-babel": "^6.1.2"
+  }
+}
