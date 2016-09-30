@@ -1,0 +1,22 @@
+{
+  "name": "prevkonsep",
+  "version": "1.0.0",
+  "description": "Simple node API & Mongo server with ES2015.",
+  "main": "bin/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnneRemacle/prevkonsep.git"
+  },
+  "author": "Anne Remacle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnneRemacle/prevkonsep/issues"
+  },
+  "homepage": "https://github.com/AnneRemacle/prevkonsep#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1"
+  }
+}
