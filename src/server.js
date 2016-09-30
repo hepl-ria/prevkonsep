@@ -3,4 +3,4 @@
 
 "use strict";
 
-console.log("Yolo");
+console.log( "Yolo" );
