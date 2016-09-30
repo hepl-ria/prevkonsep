@@ -1,0 +1,13 @@
+[ {
+	"name": "Skitty",
+	"age": 6,
+	"gender": "female",
+	"color": "tabby"
+	},
+	{
+	"name": "Mina",
+	"age": 3,
+	"gender": "female",
+	"color": "white"
+	}
+]
