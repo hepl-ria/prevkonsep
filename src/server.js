@@ -3,6 +3,7 @@
 import express from "express";
 import responseTime from "response-time";
 import bodyParser from "body-parser";
+import simpleLog from "./core/middlewares/logs";
 const APP_PORT = 8080;
 let oApp;
 
