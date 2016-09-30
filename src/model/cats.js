@@ -13,10 +13,30 @@ import fs from "fs;"
 // "const" pour les constantes, toujours en majuscule. Ne change pas ! Sinon il y aura une erreur.
 const DATA_PATH = `${ __dirname }/../../data/cats.json`;
 
+// La diférence entre var et let c'est le scope. "let" se limite au { ... }.
 let fGetAll,
     fGetOne,
     fSetOne,
     fRemoveOne;
+
+fGetJSONFromFile = function( fNext ) {
+    // "( oError, sContent ) =>" remplace "function( oError, sContent )"
+    fs.readFile( DATA_PATH, "utf-8", ( oError, sContent ) => {
+        let aCats;
+
+        if ( oError ) {
+            return fNext( oError );
+        }
+
+        try {
+            aCats = JSON.parse( sContent );
+        } catch ( oJSONError ) {
+            return fNext( oJSONError );
+        }
+
+        return fNext( null, aCats );
+    } );
+};
 
 fGetAll = function( fNext ) {
     // 1. read file
