@@ -9,6 +9,7 @@
 import { MongoClient } from "mongodb";
 import Promise from "bluebird";
 // l'idée des promise => tant que x est pas fini on passe pas à la suite.
+import zouti from "zouti";
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/cats";
 
@@ -21,7 +22,7 @@ export default function() {
             if ( oError ) {
                 return fReject( oError );
             }
-            console.log( "connected to bd." );
+            zouti.log( "connected to bd.", "Mucht/prevkonsep" );
             fResolve( oDB = oDBLink );
         } );
     } );

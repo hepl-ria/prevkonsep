@@ -11,6 +11,7 @@ import responseTime from "response-time";
 import bodyParser from "body-parser";
 import simpleLog from "./middlewares/log"; // On peut oublier le .js de log.js
 import mainRoutes from "../routes/main";
+import zouti from "zouti";
 
 const APP_PORT = 8080;
 
@@ -37,7 +38,7 @@ export default function( iAppPort = APP_PORT ) {
 
     // listening
     oApp.listen( iAppPort, () => {
-        console.log( `server is listening on port ${ iAppPort }` ); // eslint-disable-line no-console
+        zouti.log( `server is listening on port ${ iAppPort }`, "Mucht/prevkonsep" ); // eslint-disable-line no-console
     } );
 
 }
