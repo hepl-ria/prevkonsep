@@ -32,9 +32,7 @@ export default function( iAppPort = APP_PORT ) { // Pouvoir utiliser express dan
     } ) );
 
 // configure base temporary route
-    oApp.get( "/", ( oRequest, oResponse ) => {
-        oResponse.send( "Hello, HEPL!" );
-    } );
+    oApp.use( mainRoutes );
 
 // listening
     oApp.listen( iAppPort, () => {
