@@ -10,16 +10,17 @@
 import initServer from "./core/express";
 // on se connecte à la db et si ça a fonctionné on allume le serveur
 import initDB from "./core/mongodb";
+import zouti from "zouti";
 
-console.log();
-console.log( "Starting…" );
+zouti.spacer( 2 );
+zouti.log( "Starting…", "anne/prevkonsep" );
 
 initDB()
     .then( () => {
         initServer( 12345 );
     } )
     .catch( ( oError ) => {
-        console.error( oError );
+        zouti.error( oError, "anne/prevkonsep" );
     } );
 
 /* Avec les promise, l'idée c'est de dire que tant qu'un bout de code n'est pas fini on passe à la suite */
