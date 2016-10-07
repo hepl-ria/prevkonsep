@@ -9,7 +9,10 @@
 import express from "express";
 import responseTime from "response-time";
 import bodyParser from "body-parser";
+import zouti from "zouti";
+import mainRoutes from "../routes/main";
 import simpleLog from "./middlewares/log";
+import catsRoutes from "../routes/cats";
 
 const APP_PORT = 8080;
 
@@ -33,10 +36,11 @@ export default function( iAppPort = APP_PORT ) { // Pouvoir utiliser express dan
 
 // configure base temporary route
     oApp.use( mainRoutes );
+    oApp.use( catsRoutes );
 
 // listening
     oApp.listen( iAppPort, () => {
-        console.log( `Server is listening on port ${ iAppPort }` ); // eslint-disable-line no-console
+        zouti.log( `Server is listening on port ${ iAppPort }` ); // eslint-disable-line no-console
     } );
 
 }
