@@ -7,13 +7,15 @@
  */
 
 import { Router } from "express";
+
 import list from "../controllers/cast/list";
+import add from "../controllers/cast/add";
 
 let oRouter = new Router();
 
 oRouter.get( "/cats", list );
 // oRouter.get( "/cats/:name", details );
-// oRouter.post( "/cats", add );
+oRouter.post( "/cats", add );
 // oRouter.put( "/cats/:name", update );
 // oRouter.delete( "/cats/:name", destroy );
 
