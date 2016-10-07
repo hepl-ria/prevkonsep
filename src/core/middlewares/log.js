@@ -6,7 +6,9 @@
  * started at 30/09/2016
  */
 
+import zouti from "zouti";
+
 export default function ( { method, url }, oRequest, oResponse ) {
-    console.log( `${ method } ${ url }` ); // eslint-disable-line no-console
+    zouti.log( `${ method } ${ url }`, "quentin/prevkonsep" );
     fNext();
 };
