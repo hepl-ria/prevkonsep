@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Osiris",
+        "age": 6,
+        "gender": "male",
+        "color": "black"
+    }
+    {
+        "name": "Achille",
+        "age": 3,
+        "gender": "male",
+        "color": "black"
+    }
+]
