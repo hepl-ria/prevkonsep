@@ -6,32 +6,20 @@
  * started at 30/09/2016
  */
 
-import express from "express";
-import responseTime from "response-time";
-import bodyParser from "body-parser";
-import simpleLog from "./core/middlewares/log";
+// on a externalisé la config et on l'appelle
+import initServer from "./core/express";
+// on se connecte à la db et si ça a fonctionné on allume le serveur
+import initDB from "./core/mongodb";
 
-const APP_PORT = 8080;
+console.log();
+console.log( "Starting…" );
 
-let oApp;
+initDB()
+    .then( () => {
+        initServer( 12345 );
+    } )
+    .catch( ( oError ) => {
+        console.error( oError );
+    } );
 
-// configure express
-oApp = express();
-
-// configure middleware
-oApp.use( simpleLog() );
-oApp.use( responseTime() );
-oApp.use( bodyParser.json() );
-oApp.use( bodyParser.urlencoded( {
-    "extended": true,
-} ) );
-
-// configure base temporary route
-oApp.get( "/", ( oRequest, oResponse ) => {
-    oResponse.send( "Hello, world!" );
-} );
-
-// listening
-oApp.listen( APP_PORT, () => {
-    console.log( `Server is listening on port ${ APP_PORT }` ); // eslint-disable-line no-console
-} );
+/* Avec les promise, l'idée c'est de dire que tant qu'un bout de code n'est pas fini on passe à la suite */
