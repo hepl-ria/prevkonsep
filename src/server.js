@@ -6,32 +6,16 @@
  * started at 30/09/2016
  */
 
-import express from "express";
-import responseTime from "response-time";
-import bodyParser from "body-parser";
-import simpleLog from "./core/middlewares/log";
+import initServer from "./core/express"; // avec es2015 on peut donner directement le nom ici "initServer"
+import initDB from "./core/mongodb";
 
-const APP_PORT = 8080;
+console.log();
+console.log( "Starting..." );
 
-let oApp;
-
-// configure express
-oApp = express();
-
-// configure middleware
-oApp.use( simpleLog() );
-oApp.use( responseTime() );
-oApp.use( bodyParser.json() );
-oApp.use( bodyParser.urlencoded( {
-    "extended": true,
-} ) );
-
-// configure base temporary route
-oApp.get( "/", ( oRequest, oResponse ) => {
-    oResponse.send( "Hello, world!" );
-} );
-
-// listening
-oApp.listen( APP_PORT, () => {
-    console.log( `Server is listeninng on port ${ APP_PORT }` ); // eslint-disable-line no-console
-} );
+initDB()
+    .then( () => {
+        initServer( 12345 );
+    } )
+    .catch( ( oError ) => {
+        console.error( oError );
+    } );
