@@ -1,18 +1,13 @@
-/* leny/prevkonsep
- *
- * /src/server.js - Main entry point
- *
- * coded by leny@flatLand!
- * started at 30/09/2016
- */
+"user strict";
+
+console.log( "kikoo" );
 
 import express from "express";
 import responseTime from "response-time";
 import bodyParser from "body-parser";
-import simpleLog from "./core/middlewares/log";
+import simpleLog from "./core/middlewares/log.js";
 
 const APP_PORT = 8080;
-
 let oApp;
 
 // configure express
@@ -22,7 +17,7 @@ oApp = express();
 oApp.use( simpleLog() );
 oApp.use( responseTime() );
 oApp.use( bodyParser.json() );
-oApp.use( bodyParser.urlencoded( {
+oApp.use( bodyParser.urlencoded({
     "extended": true,
 } ) );
 
@@ -33,5 +28,5 @@ oApp.get( "/", ( oRequest, oResponse ) => {
 
 // listening
 oApp.listen( APP_PORT, () => {
-    console.log( `Server is listening on port ${ APP_PORT }` ); // eslint-disable-line no-console
+    console.log( `Server is listening on port 8080 ${ APP_PORT }` ); // eslint-disable-line no-console
 } );

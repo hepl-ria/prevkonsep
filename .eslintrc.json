@@ -44,7 +44,6 @@
     "array-callback-return": 2,
     "block-scoped-var": 2,
     "complexity": [ 2, 10 ],
-    "consistent-return": 2,
     "curly": 2,
     "default-case": [ 2, { "commentPattern": "^skip\\sdefault" } ],
     "dot-location": [ 2, "property" ],

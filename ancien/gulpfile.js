@@ -1,15 +1,7 @@
-/* leny/prevkonsep
- *
- * /gulpfile - gulp tasks
- *
- * coded by leny@flatLand!
- * started at 30/09/2016
- */
+/* gulpfile - 30/09/2016 */
 
-/* eslint-disable */
-
-"use strict";
-
+/* src server js - 30/09/2016 */
+/** eslint-disable **/
 var gulp = require( "gulp" ),
     gESLint = require( "gulp-eslint" ),
     gBabel = require( "gulp-babel" );
@@ -25,5 +17,7 @@ gulp.task( "build", function() {
     return gulp
         .src( "src/**/*.js" )
         .pipe( gBabel() )
-        .pipe( gulp.dest( "bin" ) )
+        .pipe( gulp.dest( "bin" ) );
 } );
+
+// Installer babel et le package 2015 pour babel
