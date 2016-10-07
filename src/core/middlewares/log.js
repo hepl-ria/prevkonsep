@@ -4,7 +4,9 @@
 *
 */
 
+import zouti from "zouti";
+
 export default function( { method, url }, oResponse, fNext ){
-    console.log( `${ method } ${ url }` ); // eslint-disable-line no-console
+    zouti.log( `${ method } ${ url }`, "pauline/prevkonsep" ); 
     fNext();
 }

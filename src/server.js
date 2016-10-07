@@ -6,15 +6,16 @@
 
 import initServer from "./core/express";
 import initDB from "./core/mongodb";
+import zouti from "zouti";
 
-console.log();
-console.log( "Starting..." );
+zouti.spacer( 2 );
+zouti.log( "Starting...", "pauline/prevkonsep" );
 
 initDB()
     .then( ( ) => {
         initServer( 12345 );
     })
     .catch( ( oError ) => { // appelé si mon code génère une erreur
-        console.error( oError ); 
+        zouti.error( oError, "pauline/prevkonsep" ); 
     });
 
