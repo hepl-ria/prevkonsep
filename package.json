@@ -16,8 +16,11 @@
     "gulp-eslint": "^3.0.1"
   },
   "dependencies": {
+    "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "response-time": "^2.3.1"
+    "mongodb": "^2.2.10",
+    "response-time": "^2.3.1",
+    "zouti": "^0.5.0"
   }
 }
