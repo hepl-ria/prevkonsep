@@ -20,9 +20,17 @@ gulp.task( "lint", function(){
         .pipe( gEslint.format() );
 });
 
+gulp.task( "watch", function(){
+    gulp.watch( "src/**/*.js", [ "build" ] );
+} );
+
+gulp.task( "default", [ "build" ] );
+
 gulp.task( "build", function(){ //on prend tout les fichiers de src, on les passe a babel et il va els réecrire dans bin
     return gulp
         .src( "src/**/*.js" )
         .pipe( gBabel() )
         .pipe( gulp.dest( "bin" ) )
 })
+
+gulp.task( "work", ["build", "watch"]);
