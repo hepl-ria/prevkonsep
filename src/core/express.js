@@ -8,6 +8,7 @@ import express from "express";
 import responseTime from "response-time";
 import bodyParser from "body-parser";
 import simpleLog from "./middlewares/log";
+import mainRoutes from "../routes/main";
 
 const APP_PORT = 8080;
 
@@ -29,10 +30,9 @@ export default function( iAppPort = APP_PORT ){
         "extended" : true,
     } ) );
 
-    // cnfigure base temporary route
-    oApp.get( "/", ( oRequest, oResponse ) => {
-        oResponse.send( "Hello, HEPL!" );
-    });
+    // cnfigure routes
+    oApp.use( mainRoutes );
+    
 
     //listening
     oApp.listen( iAppPort, () => {

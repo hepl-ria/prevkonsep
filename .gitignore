@@ -1,14 +1,5 @@
-
 npm-debug.log*
-
-# Runtime data
-pids
-*.pid
-*.seed
-
-
 node_modules
-
 .npm
 bin
 .vagrant
