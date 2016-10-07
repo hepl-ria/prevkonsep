@@ -12,6 +12,8 @@ import bodyParser from "body-parser";
 import simpleLog from "./middlewares/log"; // On peut oublier le .js de log.js
 import mainRoutes from "../routes/main";
 import zouti from "zouti";
+import catsRoutes from "../routes/cats";
+
 
 const APP_PORT = 8080;
 
@@ -35,6 +37,7 @@ export default function( iAppPort = APP_PORT ) {
 
     // configure routes
     oApp.use( mainRoutes );
+    oApp.use( catsRoutes );
 
     // listening
     oApp.listen( iAppPort, () => {
