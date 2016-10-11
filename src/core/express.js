@@ -7,6 +7,10 @@ import express from "express";
 import responseTime from "response-time";
 import bodyParser from "body-parser";
 import simpleLog from "./middlewares/log"; //On a du corriger le chemin car on est plus dans middleware
+import mainRoutes from "./routes/main";
+import zouti from "zouti";
+import catsRoutes from "../routes/cats";
+
 
 const APP_PORT = 8080;
 
@@ -29,14 +33,16 @@ export default function( iAppPort = APP_PORT ){
 	} ) );
 
 	// Configure base temporary route
-
+/*
 	oApp.get( "/", ( oRequest, oResponse ) => {
 		oResponse.send( "hello world !" );
-	} );
+	} );*/
+
+	oApp.use( mainRoutes );
 
 	// Listening
 	oApp.listen( iAppPort, () => {
-		console.log( `Server is listening on port ${ APP_PORT }` ); // eslint-disable-line no-console 
+		zouti.log( `Server is listening on port ${ APP_PORT }` ); // eslint-disable-line no-console 
 	} );
 	}
 

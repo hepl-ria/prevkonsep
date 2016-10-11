@@ -26,9 +26,11 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "gulp-eslint": "^3.0.1",
     "gulp-util": "^3.0.7",
     "mongodb": "^2.2.10",
     "response-time": "^2.3.1",
-    "stream-consume": "^0.1.0"
+    "stream-consume": "^0.1.0",
+    "zouti": "^0.5.0"
   }
 }

@@ -3,6 +3,7 @@
 
 import { MongoClient } from "mongodb";
 import Promise from "bluebird";
+import zouti from "zouti";
 const MONGO_URL = "mongodb://127.0.0.1:27017/cats" //Si la bd n'existe pas il la crée
 
 let oDb; //Memorise la connexion a la db avec 
@@ -13,12 +14,12 @@ export default function(  ) {
 			if ( oError ){
 				return fReject( oError ); // SI erreur lors de la connexion
 			}
-			console.log("Connected to db.")
+			zouti.log("Connected to db.")
 			fResolve( oDB = oDBLink );
 		} );
 	} );
 }
 
 export {
-	oDB as db,
+	oDB as db;
 };
