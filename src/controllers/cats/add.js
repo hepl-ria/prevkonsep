@@ -44,23 +44,40 @@ export default function( oRequest, oResponse ) {
         } );
     }
 
-    oCat = {
-        "name": sName,
-        "age": Math.abs( iAge ),
-        "gender": sGender,
-        "color": sColor,
-        "create": new Date(),
-        "update": new Date(),
-    };
-
     db.collection( "cats" )
-        .insertOne( oCat )
-            .then( () => {
-                oResponse.status( 201 ).json( oCat )
-            } )
-            .catch( ( oError ) => {
-                oResponse.status( 500 ).json( {
-                    "errors": [ oError ],
+        .findOne( {
+            "name": sName,
+        } )
+        .then( ( oCatFromDB ) => {
+            if ( oCatFromDB ) {
+                return oResponse.status( 409 ).json( {
+                    "errors": [ `A cat with the name "${ sName }" already exists!` ],
                 } );
+            }
+
+            oCat = {
+                "name": sName,
+                "age": Math.abs( iAge ),
+                "gender": sGender,
+                "color": sColor,
+                "create": new Date(),
+                "update": new Date(),
+            };
+
+            db.collection( "cats" )
+                .insertOne( oCat )
+                    .then( () => {
+                        oResponse.status( 201 ).json( oCat );
+                    } )
+                    .catch( ( oError ) => {
+                        oResponse.status( 500 ).json( {
+                            "errors": [ oError ],
+                        } );
+                    } );
+        } )
+        .catch( ( oError ) => {
+            oResponse.status( 500 ).json( {
+                "errors": [ oError ],
             } );
+        } );
 }
