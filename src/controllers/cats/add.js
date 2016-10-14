@@ -7,6 +7,7 @@
  */
 
 import { db } from "../../core/mongodb";
+import { slugify } from "../../core/utils";
 
 const GENDERS = [ "male", "female" ];
 
@@ -18,6 +19,7 @@ export default function( oRequest, oResponse ) {
         sGender = POST.gender,
         sColor = ( POST.color || "" ).trim(),
         aErrors = [],
+        sSlug,
         oCat;
 
     if ( !sName ) {
@@ -42,24 +44,43 @@ export default function( oRequest, oResponse ) {
         } );
     }
 
-    oCat = {
-        "name": sName,
-        "age": Math.abs( iAge ),
-        "gender": sGender,
-        "color": sColor,
-        "create": new Date(),
-        "update": new Date(),
-    };
+    sSlug = slugify( sName );
 
     db.collection( "cats" )
-        .insertOne( oCat )
-            .then( () => {
-                oResponse.status( 201 ).json( oCat );
-            } )
-            .catch( ( oError ) => {
-                oResponse.status( 500 ).json( {
-                    "errors": [ oError ],
+        .findOne( {
+            "slug": sSlug,
+        } )
+        .then( ( oCatFromDB ) => {
+            if ( oCatFromDB ) {
+                return oResponse.status( 409 ).json( {
+                    "errors": [ `A cat with the name "${ sName }" already exists!` ],
                 } );
-            } );
+            }
 
+            oCat = {
+                "slug": sSlug,
+                "name": sName,
+                "age": Math.abs( iAge ),
+                "gender": sGender,
+                "color": sColor,
+                "create": new Date(),
+                "update": new Date(),
+            };
+
+            db.collection( "cats" )
+                .insertOne( oCat )
+                    .then( () => {
+                        oResponse.status( 201 ).json( oCat );
+                    } )
+                    .catch( ( oError ) => {
+                        oResponse.status( 500 ).json( {
+                            "errors": [ oError.toString() ],
+                        } );
+                    } );
+        } )
+        .catch( ( oError ) => {
+            oResponse.status( 500 ).json( {
+                "errors": [ oError.toString() ],
+            } );
+        } );
 }
