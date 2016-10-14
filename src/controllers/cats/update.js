@@ -11,7 +11,7 @@ import { slugify } from "../../core/utils";
 
 export default function( oRequest, oResponse ) {
 	db.collection( "cats" )
-		.fidOne( {
+		.findOne( {
 			"slug": slugify( oRequest.params.slug ),
 		} )
 		.then( ( oCat ) => {
@@ -34,7 +34,7 @@ export default function( oRequest, oResponse ) {
 				oModifications.gender = sGender;
 			}
 
-			if( !sColor !== "" && sColor !== oCat.color ) {
+			if( sColor !== "" && sColor !== oCat.color ) {
 				oModifications.color = sColor;
 			}
 
@@ -61,8 +61,13 @@ export default function( oRequest, oResponse ) {
 				} )
 				.catch( ( oError ) => {
 					oResponse.sendStatus( 500 ).json( {
-						"errors" :[ oError ],
-					} )
-				} )
-		} );
+						"errors": [ oError.toString() ],
+					} );
+				} );
+			} )
+			.catch( ( oError ) => {
+				oResponse.sendStatus( 500 ).json( {
+					"errors": [ oError.toString() ],
+				} );
+			} );
 }

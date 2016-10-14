@@ -33,13 +33,13 @@ export default function( oRequest, oResponse ) {
 				} )
 				.catch( ( oError ) => {
 		            oResponse.status( 500 ).json( {
-		                "errors": [ oError ],
+		                "errors": [ oError.toString() ],
 		            } );
 		        } );
 		} )
 		.catch( ( oError ) => {
             oResponse.status( 500 ).json( {
-                "errors": [ oError ],
+                "errors": [ oError.toString() ],
             } );
         } );
 }

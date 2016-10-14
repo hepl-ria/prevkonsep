@@ -11,7 +11,7 @@ import list from "../controllers/cats/list";
 import add from "../controllers/cats/add";
 import details from "../controllers/cats/details";
 import destroy from "../controllers/cats/destroy";
-import update from " controllers/cats/update";
+import update from "../controllers/cats/update";
 
 let oRouter = new Router();
 
