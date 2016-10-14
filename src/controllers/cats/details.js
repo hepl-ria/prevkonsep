@@ -9,11 +9,11 @@
  import { db } from "../../core/mongodb";
 
  export default function( oRequest, oResponse ) {
- 	let sName = oRequest.params.name;
+ 	let sSlug = oRequest.params.slug.toLowerCase().replace( /\s/g, "-" );
 
  	db.collection( "cats" )
  		.find( {
- 			"name": sName,
+ 			"name": sSlug,
  		} )
  		.then( ( oCat ) => {
  			if( oCat ) {
