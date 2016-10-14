@@ -7,13 +7,13 @@
  */
 
  import { db } from "../../core/mongodb";
+ import { slugify } from "../../core/utils";
 
  export default function( oRequest, oResponse ) {
- 	let sSlug = oRequest.params.slug.toLowerCase().replace( /\s/g, "-" );
 
  	db.collection( "cats" )
  		.find( {
- 			"name": sSlug,
+ 			"slug": slugify( oRequest.params.slug ),
  		} )
  		.then( ( oCat ) => {
  			if( oCat ) {
