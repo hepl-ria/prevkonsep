@@ -1,5 +1,5 @@
 /* ria/prevkonsep
- *
+ * 
  * /src/controllers/cats/details.js - Controllers for one cat details
  *
  * Coded by - Paulineviroux
@@ -22,7 +22,7 @@ export default function( oRequest, oResponse ) {
         } )
         .catch( ( oError ) => {
             oResponse.status( 500 ).json( {
-                "errors": [ oError ],
+                "errors": [ oError.toString() ],
             } );
         } );
 }

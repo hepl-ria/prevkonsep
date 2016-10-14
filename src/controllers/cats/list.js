@@ -1,5 +1,5 @@
 /*
-*
+* 
 * /src/controllers/cats/list.js -  API Controller cats listing
 *
 */
@@ -15,7 +15,7 @@ export default function( oRequest, oResponse ) {
             } ) //si ca fonctionne
             .catch( ( oError ) => { // si on a une erreur
                 oResponse.status( 500 ).json( {
-                    "errors": [ oError ],
+                    "errors": [ oError.toString() ],
                 } );
             } ); 
 }

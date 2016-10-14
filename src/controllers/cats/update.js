@@ -1,5 +1,5 @@
 /* ria/prevkonsep
- *
+ * 
  * /src/core/utils.js - sMALL & MISC UTIITIES
  *
  * Coded by - Paulineviroux

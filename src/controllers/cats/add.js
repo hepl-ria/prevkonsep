@@ -1,5 +1,5 @@
 /* ria/prevkonsep
- *
+ * 
  * /src/controllers/cats/add.js - API Controller for cats adding
  *
  * Coded by - Paulineviroux
@@ -76,13 +76,13 @@ export default function( oRequest, oResponse ) {
                     } )
                     .catch( ( oError ) => {
                         oResponse.status( 500 ).json( {
-                            "errors": [ oError ],
+                            "errors": [ oError.toString() ],
                         } );
                     } );
         } )
         .catch( ( oError ) => {
             oResponse.status( 500 ).json( {
-                "errors": [ oError ],
+                "errors": [ oError.toString() ],
             } );
         } );
 }
