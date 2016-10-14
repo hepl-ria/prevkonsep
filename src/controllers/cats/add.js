@@ -7,6 +7,7 @@
  */
 
 import { db } from "../../core/mongodb";
+import { slugify } from "../../core/utils";
 
 const GENDERS = [ "male", "female" ];
 
@@ -43,7 +44,7 @@ export default function( oRequest, oResponse ) {
         } );
     }
 
-    sSlug = sName.toLowerCase().replace( /\s/g, "-" );
+    sSlug = slugify( sName );
 
     db.collection( "cats" )
         .findOne( {
