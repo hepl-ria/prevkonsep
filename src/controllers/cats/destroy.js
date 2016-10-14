@@ -27,20 +27,20 @@ export default function( oRequest, oResponse ) {
                     if ( deletedCount === 1 ) {
                         return oResponse.sendStatus( 204 );
                     }
-                    
+
                     return oResponse.status( 500 ).json( {
                         "errors": [ "Unknown deletion error" ],
                     } );
                 } )
                 .catch( ( oError ) => {
                     oResponse.status( 500 ).json( {
-                        "errors": [ oError ],
+                        "errors": [ oError.toString() ],
                     } );
                 } );
         } )
         .catch( ( oError ) => {
             oResponse.status( 500 ).json( {
-                "errors": [ oError ],
+                "errors": [ oError.toString() ],
             } );
         } );
 }
