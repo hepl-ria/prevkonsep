@@ -18,6 +18,7 @@ export default function( oRequest, oResponse ) {
         sGender = POST.gender,
         sColor = ( POST.color || "" ).trim(),
         aErrors = [],
+        sSlug,
         oCat;
 
     if ( !sName ) {
@@ -42,9 +43,11 @@ export default function( oRequest, oResponse ) {
         } );
     }
 
+    sSlug = sName.toLowerCase().replace( /\s/g, "-" );
+
     db.collection( "cats" )
         .findOne( {
-            "name": sName,
+            "slug": sSlug,
         } )
         .then( ( oCatFromDB ) => {
             if ( oCatFromDB ) {
@@ -54,6 +57,7 @@ export default function( oRequest, oResponse ) {
             }
 
             oCat = {
+                "slug": sSlug,
                 "name": sName,
                 "age": Math.abs( iAge ),
                 "gender": sGender,
