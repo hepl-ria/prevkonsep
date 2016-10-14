@@ -1,6 +1,6 @@
 let fSlugify;
 
-fSlugify = function ( sStr ) {
+fSlugify = function ( sStr = "" ) {
     return sStr.toLowerCase().replace(/\s/g, "-");
 };
 
