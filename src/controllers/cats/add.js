@@ -1,4 +1,5 @@
 import { db } from "../../core/mongodb"; // importer database
+import { slugify } from "../../core/utils";
 
 const GENDERS = ["male", "female"];
 
@@ -34,6 +35,8 @@ export default function ( oRequest, oResponse ) {
             "errors": aErrors,
         });
     }
+
+    sSlug = slugify( sName );
 
     // Remplacer toutes les majuscules dans l'url par des minuscules et des tirets pas les espaces
     sSlug = sName.toLowerCase().replace(/\s/g, "-");
