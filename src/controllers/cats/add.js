@@ -10,6 +10,7 @@ export default function ( oRequest, oResponse ) {
         sGender = POST.gender,
         sColor = (POST.color || "" ).trim(),
         aErrors = [],
+        sSlug,
         oCat;
 
     if ( !sName ) {
@@ -34,11 +35,14 @@ export default function ( oRequest, oResponse ) {
         });
     }
 
+    // Remplacer toutes les majuscules dans l'url par des minuscules et des tirets pas les espaces
+    sSlug = sName.toLowerCase().replace(/\s/g, "-");
+
     /*oResponse.send( "all is ok");*/
 
     db.collection( "cats" )
         .findOne({
-            "name": sName,
+            "slug": sSlug,
         })
         .then( (oCatFromDB ) => {
             if (oCatFromDB){
@@ -48,6 +52,7 @@ export default function ( oRequest, oResponse ) {
             }
 
             oCat = {
+                "slug": sSlug,
                 "name": sName,
                 "age": Math.abs(iAge), // si quelqu'un donne -24 ça donnera 24
                 "gender": sGender,
