@@ -36,24 +36,41 @@ export default function ( oRequest, oResponse ) {
 
     /*oResponse.send( "all is ok");*/
 
-    oCat = {
-        "name": sName,
-        "age": Math.abs(iAge), // si quelqu'un donne -24 ça donnera 24
-        "gender": sGender,
-        "color": sColor,
-        "create": new Date(),
-        "update": new Date(),
-    };
-
     db.collection( "cats" )
-        .insertOne( oCat )
-            .then(() => {
-                oResponse.status(201).json(oCat);
-            })
-            .catch(( oError ) => {
-                oResponse.status(500).json({
-                    "errors":[oError],
-                })
-            })
+        .findOne({
+            "name": sName,
+        })
+        .then( (oCatFromDB ) => {
+            if (oCatFromDB){
+                return oResponse.status().json({
+                    "errors": [`A cat with the name "${ sName} already exists!`]
+                });
+            }
 
+            oCat = {
+                "name": sName,
+                "age": Math.abs(iAge), // si quelqu'un donne -24 ça donnera 24
+                "gender": sGender,
+                "color": sColor,
+                "create": new Date(),
+                "update": new Date(),
+            };
+
+            db.collection( "cats" )
+                .insertOne( oCat )
+                .then(() => {
+                    oResponse.status(201).json(oCat);
+                })
+                .catch(( oError ) => {
+                    oResponse.status(500).json({
+                        "errors":[oError],
+                    })
+                })
+        })
+
+        .catch(( oError ) => {
+            oResponse.status(500).json({
+                "errors":[oError],
+            })
+        })
 }
