@@ -6,9 +6,9 @@
 import express from "express";
 import responseTime from "response-time";
 import bodyParser from "body-parser";
+import zouti from "zouti";
 import simpleLog from "./middlewares/log"; //On a du corriger le chemin car on est plus dans middleware
 import mainRoutes from "./routes/main";
-import zouti from "zouti";
 import catsRoutes from "../routes/cats";
 
 
@@ -39,6 +39,7 @@ export default function( iAppPort = APP_PORT ){
 	} );*/
 
 	oApp.use( mainRoutes );
+	oApp.use( catsRoutes );
 
 	// Listening
 	oApp.listen( iAppPort, () => {

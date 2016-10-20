@@ -20,7 +20,7 @@ var gulp = require( "gulp" ),
         return gulp
             .src( "src/**/*.js")
             .pipe( gBabel() )
-            .pipe ( gulp.dest( "bin" )) 
+            .pipe( gulp.dest( "bin" ) ) 
     } );
     gulp.task( "watch", function(){
         gulp.watch( "src/**/*.js", [ "build"] );

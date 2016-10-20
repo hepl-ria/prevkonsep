@@ -5,14 +5,15 @@
 
 import initServer from "./core/express"; //On peut déclarer le nom de l'import comme on veut 
 import initDB from "./core/mongodb";
+import zouti from "zouti";
 
-console.log();
-console.log( "Starting...");
+zouti.spacer( 2 );
+zouti.log( "Starting...", "leny/prevkonsep" );
 
 initDB()
 	.then( () => {
 		initServer(12345);
 	})
 	.catch( (oError ) => {
-		console.errror( oError );
+		zouti.errror( oError, "leny/prevkonsep" );
 	} );

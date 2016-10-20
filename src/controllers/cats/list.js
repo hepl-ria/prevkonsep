@@ -12,7 +12,7 @@ export default function( oRequest, oResponse ){ // SI pas de db lui la créera
 			})
 			.catch( ( oError ) => {
 				oResponse.status( 500 ).json( {
-					"errors": [ oError ],
+					"errors": [ oError.toString() ],
 				} );
 			} );
 	
