@@ -9,7 +9,7 @@
 import { Router } from "express";
 import list from "../controllers/red-pandas/list";
 import add from "../controllers/red-pandas/add";
-//import details from "../controllers/red-pandas/details";
+import details from "../controllers/red-pandas/details";
 //import destroy from "../controllers/red-pandas/destroy";
 //import update from "../controllers/red-pandas/update";
 
