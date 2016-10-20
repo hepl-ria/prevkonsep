@@ -7,6 +7,7 @@
  */
 
 import { db } from "../../core/mongodb";
+import { slugify } from "../../core/utils";
 
 const GENDERS = [ "male", "female" ];
 
@@ -18,6 +19,7 @@ export default function( oRequest, oResponse ) {
         sGender = POST.gender,
         sColor = ( POST.color || "" ).trim(),
         aErrors = [],
+        sSlug,
         oCat;
 
     // Error managment
@@ -44,9 +46,11 @@ export default function( oRequest, oResponse ) {
         } );
     }
 
+    sSlug = slugify( sName );
+
     db.collection( "cats" )
         .findOne( {
-            "name": sName,
+            "slug": sSlug,
         } )
         .then( ( oCatFromDB ) => {
             if ( oCatFromDB ) {
@@ -56,6 +60,7 @@ export default function( oRequest, oResponse ) {
             }
 
             oCat = {
+                "slug": sSlug,
                 "name": sName,
                 "age": Math.abs( iAge ),
                 "gender": sGender,

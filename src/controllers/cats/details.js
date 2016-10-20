@@ -12,7 +12,7 @@
  export default function( oRequest, oResponse ) {
 
  	db.collection( "cats" )
- 		.find( {
+ 		.findOne( {
  			"slug": slugify( oRequest.params.slug ),
  		} )
  		.then( ( oCat ) => {

@@ -16,9 +16,9 @@ import update from "../controllers/cats/update";
 let oRouter = new Router();
 
 oRouter.get( "/cats", list );
-oRouter.get( "/cats/:name", details );
+oRouter.get( "/cats/:slug", details );
 oRouter.post( "/cats", add );
 oRouter.put( "/cats/:slug", update );
-oRouter.delete( "cats/:slug", destroy );
+oRouter.delete( "/cats/:slug", destroy );
 
 export default oRouter;

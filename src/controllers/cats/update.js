@@ -9,6 +9,8 @@
 import { db } from "../../core/mongodb";
 import { slugify } from "../../core/utils";
 
+const GENDERS = [ "male", "female" ];
+
 export default function( oRequest, oResponse ) {
 	db.collection( "cats" )
 		.findOne( {
@@ -22,7 +24,7 @@ export default function( oRequest, oResponse ) {
 			const POST = oRequest.body
 
 			let iAge = +POST.age,
-				iGenger = POST.gender,
+				sGender = POST.gender,
 				sColor = ( POST.color || "" ).trim(),
 				oModifications = {};
 
@@ -30,7 +32,7 @@ export default function( oRequest, oResponse ) {
 				oModifications.age = iAge;
 			}
 
-			if ( GENDERS.indexOf( gender ) > -1 && gender !== oCat.gender ) {
+			if ( GENDERS.indexOf( sGender ) > -1 && sGender !== oCat.gender ) {
 				oModifications.gender = sGender;
 			}
 
@@ -46,7 +48,7 @@ export default function( oRequest, oResponse ) {
 
 			db.collection( "cats" )
 				.updateOne( {
-					"id": oCat._id,
+					"_id": oCat._id,
 				}, {
 					"$set": oModifications,
 				} )
@@ -60,13 +62,13 @@ export default function( oRequest, oResponse ) {
 					oResponse.sendStatus( 204 );
 				} )
 				.catch( ( oError ) => {
-					oResponse.sendStatus( 500 ).json( {
+					oResponse.status( 500 ).json( {
 						"errors": [ oError.toString() ],
 					} );
 				} );
 			} )
 			.catch( ( oError ) => {
-				oResponse.sendStatus( 500 ).json( {
+				oResponse.status( 500 ).json( {
 					"errors": [ oError.toString() ],
 				} );
 			} );
