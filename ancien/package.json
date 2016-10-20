@@ -1,0 +1,28 @@
+{
+  "name": "prevkonsep",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "Simple node API & Mongo server with ES2015",
+  "main": "bin/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://Jimmylet@github.com/Jimmylet/prevkonsep.git"
+  },
+  "author": "Jimmy Letecheur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jimmylet/prevkonsep/issues"
+  },
+  "homepage": "https://github.com/Jimmylet/prevkonsep#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-eslint": "^3.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "response-time": "^2.3.1"
+  }
+}
