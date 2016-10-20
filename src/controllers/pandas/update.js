@@ -37,7 +37,11 @@ export default function( oRequest, oResponse ) {
 			}
 
 			if( sBabies !== "" && sBabies !== oPanda.babies ) {
-				oModifications.color = sBabies;
+				oModifications.babies = sBabies;
+			}
+
+			if( sHome !== "" && sHome !== oPanda.home ) {
+				oModifications.home = sHome;
 			}
 
 			if ( Object.keys( oModifications ).length === 0 ) {
