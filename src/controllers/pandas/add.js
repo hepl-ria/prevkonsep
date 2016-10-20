@@ -17,7 +17,7 @@ export default function( oRequest, oResponse ) {
     let sName = ( POST.name || "" ).trim(),
         iAge = parseInt( POST.age, 10 ),
         sGender = POST.gender,
-        sBabies = ( POST.babies || "No babies yet" ).trim(),
+        sBabies = ( POST.babies || "" ).trim(),
         sHome = ( POST.home || "" ),
         aErrors = [],
         sSlug,
