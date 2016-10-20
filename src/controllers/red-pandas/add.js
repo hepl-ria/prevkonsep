@@ -1,6 +1,6 @@
 /* prevkonsep
  *
- * /src/routes/add.js - API controller for cats adding
+ * /src/routes/add.js - API controller for red pandas adding
  *
  * coded by Anne
  * started at 7/10/2016
@@ -21,7 +21,7 @@ export default function( oRequest, oResponse ) {
         sHome = ( POST.home || "" ),
         aErrors = [],
         sSlug,
-        oCat;
+        oPanda;
 
     // Error managment
         // Name
@@ -53,14 +53,14 @@ export default function( oRequest, oResponse ) {
         .findOne( {
             "slug": sSlug,
         } )
-        .then( ( oCatFromDB ) => {
-            if ( oCatFromDB ) {
+        .then( ( oPandaFromDB ) => {
+            if ( oPandaFromDB ) {
                 return oResponse.status( 409 ).json( {
                     "errors": [ `A red panda with the name "${ sName }" already exists!` ],
                 } );
             }
 
-            oCat = {
+            oPanda = {
                 "slug": sSlug,
                 "name": sName,
                 "age": Math.abs( iAge ),
