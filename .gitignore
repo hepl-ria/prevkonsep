@@ -1,6 +1,7 @@
+npm-debug.log*
 node_modules
 .npm
-npm-debut.log*
 bin
-/.idea
-/.vagrant
+.vagrant
+.idea
+.DS_Store
