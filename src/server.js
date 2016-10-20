@@ -1,40 +1,23 @@
+
 /* auré/prevkonsep
-*
-* /src/server.js - Main entry point
-*
-*
-* coded by auré
-* started at 30/09/2016
-*/
+ *
+ * /src/server.js - Main entry point
+ *
+ * coded by auré
+ * started at 30/09/2016
+ */
 
-import express from "express";
-import responseTime from "response-time";
-import bodyParser from "body-parser";
-import simpleLog from "./core/middlewares/log";
+import initServer from "./core/express";
+import initDB from "./core/mongodb";
+import zouti from "zouti";
 
-const APP_PORT = 8080;
+zouti.spacer( 2 );
+zouti.log( "Starting...", "leny/prevkonsep" );
 
-let oApp;
-
-// configuration express
-oApp = express();
-
-// configure middleware
-oApp.use(simpleLog());
-oApp.use(responseTime());
-oApp.use(bodyParser.json());
-oApp.use(bodyParser.urlencoded(
-	"extended": true,
-}));
-
-// configure base temporary route
-oApp.get("/", (oRequest, oResponse) => {
-
-	oResponse.send("Hello world !");
-});
-
-// listening
-oApp.listen(APP_PORT, () => {
-
-	console.log(´Server is listening on port ${APP_PORT}`); //eslint-disable-line  no-console
-});
+initDB()
+    .then( () => {
+        initServer( 12345 );
+    } )
+    .catch( ( oError ) => {
+        zouti.error( oError, "leny/prevkonsep" );
+} );
