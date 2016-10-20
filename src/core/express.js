@@ -13,6 +13,7 @@ import zouti from "zouti";
 import simpleLog from "./middlewares/log";
 import mainRoutes from "../routes/main";
 import catsRoutes from "../routes/cats";
+import alpagasRoutes from "../routes/alpagas";
 
 const APP_PORT = 8080;
 
@@ -37,9 +38,10 @@ export default function( iAppPort = APP_PORT ) {
     // configure routes
     oApp.use( mainRoutes );
     oApp.use( catsRoutes );
+    oApp.use( alpagasRoutes );
 
     // listening
     oApp.listen( iAppPort, () => {
-        zouti.log( `Server is listening on port ${ iAppPort }`, "leny/prevkonsep" );
+        zouti.log( `Server is listening on port ${ iAppPort }`, "quentin/prevkonsep" );
     } );
 }

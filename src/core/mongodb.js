@@ -10,7 +10,7 @@ import { MongoClient } from "mongodb";
 import Promise from "bluebird";
 import zouti from "zouti";
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/cats";
+const MONGO_URL = "mongodb://127.0.0.1:27017/alpagas";
 
 let oDB;
 
@@ -21,7 +21,7 @@ export default function() {
                 return fReject( oError );
             }
 
-            zouti.log( "Connected to db.", "leny/prevkonsep" );
+            zouti.log( "Connected to db.", "quentin/prevkonsep" );
             fResolve( oDB = oDBLink );
         } );
     } );
