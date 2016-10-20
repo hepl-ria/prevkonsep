@@ -11,9 +11,8 @@ import { db } from "../../core/mongodb";
 export default function( oRequest, oResponse ) {
     db.collection( "red-pandas" )
         .find( {} )
-        /* find retourne ce qu'on appelle un curseur */
         .toArray()
-            .then( ( aCats = [] ) => {
+            .then( ( aPandas = [] ) => {
                 oResponse.json( aPandas );
             } )
             .catch( ( oError ) => {
