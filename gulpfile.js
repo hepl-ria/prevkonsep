@@ -28,10 +28,10 @@ gulp.task( "build", function() {
         .pipe( gulp.dest( "bin" ) )
 } );
 
-gulp.task("watch", function () {
-    gulp.watch("src/**/*.js", ['build']);
-})
+gulp.task( "watch", function() {
+    gulp.watch( "src/**/*.js", [ "build" ] );
+} );
 
-gulp.task("default", ['build']);
+gulp.task( "default", [ "build" ] );
 
-gulp.task("work", ['build', "watch"]);
+gulp.task( "work", [ "build", "watch" ] );
