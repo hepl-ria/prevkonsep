@@ -3,7 +3,7 @@
  * /src/routes/add.js - API controller for red pandas adding
  *
  * coded by Anne
- * started at 7/10/2016
+ * started at 18/10/2016
  */
 
 import { db } from "../../core/mongodb";
@@ -49,7 +49,7 @@ export default function( oRequest, oResponse ) {
 
     sSlug = slugify( sName );
 
-    db.collection( "red-pandas" )
+    db.collection( "pandas" )
         .findOne( {
             "slug": sSlug,
         } )
@@ -71,7 +71,7 @@ export default function( oRequest, oResponse ) {
                 "update": new Date(),
             };
 
-            db.collection( "red-pandas" )
+            db.collection( "pandas" )
                 .insertOne( oPanda )
                     .then( () => {
                         oResponse.status( 201 ).json( oPanda );

@@ -11,7 +11,7 @@
 
  export default function( oRequest, oResponse ) {
 
- 	db.collection( "red-pandas" )
+ 	db.collection( "pandas" )
  		.findOne( {
  			"slug": slugify( oRequest.params.slug ),
  		} )

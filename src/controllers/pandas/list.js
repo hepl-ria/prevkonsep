@@ -3,13 +3,13 @@
  * /src/controllers/red-pandas/list.js - API controller for red-pandas listing
  *
  * coded by Anne
- * started at 7/10/2016
+ * started at 18/10/2016
  */
 
 import { db } from "../../core/mongodb";
 
 export default function( oRequest, oResponse ) {
-    db.collection( "red-pandas" )
+    db.collection( "pandas" )
         .find( {} )
         .toArray()
             .then( ( aPandas = [] ) => {

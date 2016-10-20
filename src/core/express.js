@@ -13,6 +13,7 @@ import zouti from "zouti";
 import simpleLog from "./middlewares/log";
 import mainRoutes from "../routes/main";
 import catsRoutes from "../routes/cats";
+import pandasRoutes from "../routes/pandas";
 
 const APP_PORT = 8080;
 
@@ -37,6 +38,7 @@ export default function( iAppPort = APP_PORT) {
     // configure routes
     oApp.use( mainRoutes );
     oApp.use( catsRoutes );
+    oApp.use( pandasRoutes );
 
     // listening
     oApp.listen( iAppPort, () => {
