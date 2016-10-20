@@ -10,7 +10,7 @@ import bodyParser from "body-parser";
 import simpleLog from "./middlewares/log";
 import mainRoutes from "../routes/main";
 import zouti from "zouti";
-import catsRoutes from "../routes/cats";
+import catsRoutes from "../routes/fishes";
 
 const APP_PORT = 8080;
 

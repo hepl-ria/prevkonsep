@@ -1,6 +1,6 @@
 /* ria/prevkonsep
  * 
- * /src/controllers/cats/destroy.js - Controllers for cat deletation
+ * /src/controllers/fishes/destroy.js - Controllers for fish deletation
  *
  * Coded by - Paulineviroux
  * started at 07/10/2016
@@ -9,17 +9,17 @@ import { db } from "../../core/mongodb";
 import { slugify } from "../../core/utils";
 
 export default function( oRequest, oResponse ) {
-    db.collection( "cats" )
+    db.collection( "fishes" )
         .findOne( {
             "slug": slugify( oRequest.params.slug ),
         } )
-        .then( ( oCat ) => {
-            if ( !oCat ) {
+        .then( ( oFish ) => {
+            if ( !oFish ) {
                 return oResponse.sendStatus( 404 );
             }
-            db.collection( "cats" )
+            db.collection( "fishes" )
                 .deleteOne( {
-                    "_id": oCat._id,
+                    "_id": oFish._id,
                 } )
                 .then( ( { deletedCount } ) => {
                     if ( deletedCount === 1 ) {

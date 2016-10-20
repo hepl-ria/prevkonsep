@@ -10,14 +10,15 @@ import { db } from "../../core/mongodb";
 import { slugify } from "../../core/utils";
 
 const GENDERS = ["male", "female"];
+const WATERS = [ "sweet", "salty" ];
 
 export default function( oRequest, oResponse ) {
-    db.collection( "cats" )
+    db.collection( "fishes" )
         .findOne( {
             "slug": slugify( oRequest.params.slug ),
         } )
-        .then( ( oCat ) => {
-            if ( !oCat ) {
+        .then( ( oFish ) => {
+            if ( !oFish ) {
                 return oResponse.sendStatus( 404 );
             }
 
@@ -25,6 +26,7 @@ export default function( oRequest, oResponse ) {
 
             let iAge = +POST.age,
                 sGender = POST.gender,
+                sWater = POST.water,
                 sColor = ( POST.color || "" ).trim(),
                 oModifications = {};
 
@@ -32,11 +34,15 @@ export default function( oRequest, oResponse ) {
                 oModifications.age = iAge;
             }
 
-            if ( GENDERS.indexOf( sGender ) > -1 && sGender !== oCat.gender ) {
+            if ( GENDERS.indexOf( sGender ) > -1 && sGender !== oFish.gender ) {
                 oModifications.gender = sGender;
             }
 
-            if ( !sColor !== "" && sColor !== oCat.color ) {
+            if ( WATERS.indexOf( sWater ) > -1 && sWater !== oFish.water ) {
+                oModifications.water = sWater;
+            }
+
+            if ( !sColor !== "" && sColor !== oFish.color ) {
                 oModifications.color = sColor;
             }
 
@@ -47,9 +53,9 @@ export default function( oRequest, oResponse ) {
             oModifications.update = new Date();
 
 
-            db.collection( "cats" )
+            db.collection( "fishes" )
                 .updateOne( {
-                    "_id": oCat._id,
+                    "_id": oFish._id,
                 } , {
                     "$set": oModifications,
                 } )

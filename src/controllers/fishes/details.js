@@ -1,6 +1,6 @@
 /* ria/prevkonsep
  * 
- * /src/controllers/cats/details.js - Controllers for one cat details
+ * /src/controllers/fishes/details.js - Controllers for one fish details
  *
  * Coded by - Paulineviroux
  * started at 14/10/2016
@@ -10,13 +10,13 @@ import { db } from "../../core/mongodb";
 import { slugify } from "../../core/utils";
 
 export default function( oRequest, oResponse ) {
-    db.collection( "cats" )
+    db.collection( "fishes" )
         .findOne( { 
             "slug" : slugify( oRequest.params.slug ),
         } )
-        .then( ( oCat ) => {
-            if ( oCat ) {
-                return oResponse.json( oCat );
+        .then( ( oFish ) => {
+            if ( oFish ) {
+                return oResponse.json( oFish );
             }
             return oResponse.sendStatus( 404 );
         } )

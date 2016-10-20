@@ -1,17 +1,17 @@
 /*
 * 
-* /src/controllers/cats/list.js -  API Controller cats listing
+* /src/controllers/fishes/list.js -  API Controller fishes listing
 *
 */
 
 import { db } from "../../core/mongodb";
 
 export default function( oRequest, oResponse ) {
-    db.collection( "cats" )
+    db.collection( "fishes" )
         .find( {} )
         .toArray()
-            .then( ( aCats = [] ) => {
-                oResponse.json( aCats );
+            .then( ( aFishes = [] ) => {
+                oResponse.json( aFishes );
             } ) //si ca fonctionne
             .catch( ( oError ) => { // si on a une erreur
                 oResponse.status( 500 ).json( {
