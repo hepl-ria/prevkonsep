@@ -1,8 +1,8 @@
-/* quentin/prevkonsep
+/* leny/prevkonsep
  *
  * /src/controllers/cats/list.js - API Controller for cats listing
  *
- * coded by quentin
+ * coded by leny@flatLand!
  * started at 07/10/2016
  */
 
@@ -17,7 +17,7 @@ export default function( oRequest, oResponse ) {
             } )
             .catch( ( oError ) => {
                 oResponse.status( 500 ).json( {
-                    "errors": [ oError ],
+                    "errors": [ oError.toString() ],
                 } );
             } );
 }

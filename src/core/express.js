@@ -1,8 +1,8 @@
-/* quentin/prevkonsep
+/* leny/prevkonsep
  *
  * /src/core/express.js - Configure express
  *
- * coded by quentin
+ * coded by leny@flatLand!
  * started at 07/10/2016
  */
 
@@ -40,7 +40,6 @@ export default function( iAppPort = APP_PORT ) {
 
     // listening
     oApp.listen( iAppPort, () => {
-        zouti.log( `Server is listeninng on port ${ APP_PORT }`, "quentin/prevkonsep" );
+        zouti.log( `Server is listening on port ${ iAppPort }`, "leny/prevkonsep" );
     } );
-
 }

@@ -1,12 +1,12 @@
-/* quentin/prevkonsep
+/* leny/prevkonsep
  *
- * /gulpfile.js - gulp tasks
+ * /gulpfile - gulp tasks
  *
- * coded by quentin
+ * coded by leny@flatLand!
  * started at 30/09/2016
  */
 
- /* eslint - disable */
+/* eslint-disable */
 
 "use strict";
 
@@ -21,11 +21,11 @@ gulp.task( "lint", function() {
         .pipe( gESLint.format() );
 } );
 
-gulp.task( "build", function () {
+gulp.task( "build", function() {
     return gulp
         .src( "src/**/*.js" )
         .pipe( gBabel() )
-        .pipe( gulp.dest( "bin" ) );
+        .pipe( gulp.dest( "bin" ) )
 } );
 
 gulp.task( "watch", function() {

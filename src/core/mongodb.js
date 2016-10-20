@@ -1,8 +1,8 @@
-/* quentin/prevkonsep
+/* leny/prevkonsep
  *
  * /src/core/mongodb.js - MongoDB Connector
  *
- * coded by quentin
+ * coded by leny@flatLand!
  * started at 07/10/2016
  */
 
@@ -21,7 +21,7 @@ export default function() {
                 return fReject( oError );
             }
 
-            zouti.log( "Connected to db.", "quentin/prevkonsep" );
+            zouti.log( "Connected to db.", "leny/prevkonsep" );
             fResolve( oDB = oDBLink );
         } );
     } );
